@@ -1,18 +1,23 @@
 package youth.memberjoin.member;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
+@RequiredArgsConstructor
 public class MemoryMemberRepository implements MemberRepository{
 
-    //Map<String, String> store = new HashMap<>();
+    Map<String, Member> store = new HashMap<>();
     @Override
     public void save(Member member) {
-
+        store.put(member.getId(), member);
     }
 
     @Override
     public Member findById(String id) {
-        return null;
+        return store.get(id);
     }
 }

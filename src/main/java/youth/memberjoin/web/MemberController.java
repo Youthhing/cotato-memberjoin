@@ -13,20 +13,16 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping("/create")
-    public String create(@RequestBody Member member){
-        //id,pw 만 받는 클래스만들어서 관리해봐라
-        Member member1 = new Member(member.getId(), member.getPw(), member.getName());
-        memberService.join(member);
 
-        return "회원가입 완료.";
-    }
-
-    @GetMapping("/afterLogin")
+    //로그인 후의 화면
+    @GetMapping("/")
     public String afterLogin(@RequestBody Member member){
 
-        return "index.html";
+        return "you are login!";
     }
+
+
+
 
 
 }

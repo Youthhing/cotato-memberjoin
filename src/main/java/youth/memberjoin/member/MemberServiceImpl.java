@@ -1,15 +1,20 @@
 package youth.memberjoin.member;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
     @Override
     public void join(Member member) {
+        if(memberRepository.findById(member.getId())==null){
+            memberRepository.save(member);
+        }
 
     }
 
