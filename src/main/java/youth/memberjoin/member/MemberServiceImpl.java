@@ -30,7 +30,8 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public Member findMember(String id) {
-        return null;
+        Member member = memberRepository.findById(id);
+        return member;
     }
 
 
