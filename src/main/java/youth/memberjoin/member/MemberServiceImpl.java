@@ -2,6 +2,7 @@ package youth.memberjoin.member;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import youth.memberjoin.web.dto.LoginDto;
 
 import java.util.Optional;
 
@@ -13,19 +14,32 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public void join(Member member) {
         if(memberRepository.findById(member.getId())==null){
+            //해당 id가 이미 존재하는지 확인
             memberRepository.save(member);
         }
 
     }
 
     @Override
-    public Member Login(Member member) {
+    public Optional<Member> Login(LoginDto loginDto) {
         //로그인하려는 회원의 id,pw가 memberRepository의 pw랑 동일
-        Member member1 = memberRepository.findById(member.getId());
-        if(member.getPw()==member1.getPw()){
+        Member member = memberRepository.findById(loginDto.getId());
+        if(member.getPw().equals(loginDto.getPw())){
+            return Optional.of(member);
+        }
+        else{
+            return Optional.empty();
+        }
+
+    }
+
+    @Override
+    public Member LoginMember(LoginDto loginDto) {
+        Member member = memberRepository.findById(loginDto.getId());
+        if(member.getPw().equals(loginDto.getPw())){
             return member;
         }
-        return member;//로그인 실패시?
+        else return null;
     }
 
     @Override

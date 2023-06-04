@@ -32,4 +32,18 @@ public class MemberServiceTest {
 
 
     }
+
+    @Test
+    void 회원조회(){
+        //given
+        Member member = new Member("Youthing", "1234", "youth");
+
+        //when
+        memberService.join(member);
+        Member findMember = memberService.findMember("Youthing");
+
+        //then
+        assertThat(member.getId()).isEqualTo(findMember.getId());
+
+    }
 }
