@@ -46,4 +46,19 @@ public class MemberServiceTest {
         assertThat(member.getId()).isEqualTo(findMember.getId());
 
     }
+
+    @Test
+    void 회원탈퇴(){
+        //given
+        Member member = new Member("Youthing","1234","Youth");
+        memberService.join(member);
+
+        //when
+        memberService.deleteMember(member);
+        Member member1 = memberService.findMember("Youthing");
+
+        //then
+        assertThat(member1).isNull();
+
+    }
 }
