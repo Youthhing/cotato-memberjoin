@@ -54,11 +54,11 @@ public class MemberServiceTest {
         memberService.join(member);
 
         //when
-        memberService.deleteMember(member);
-        Member member1 = memberService.findMember("Youthing");
+        Member member1 = memberService.deleteMember(member);
+
 
         //then
-        assertThat(member1).isNull();
+        assertThat(member1.getId()).isEqualTo("Youthing");
 
     }
 }

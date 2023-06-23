@@ -22,7 +22,8 @@ public class MemoryMemberRepository implements MemberRepository{
     }
 
     @Override
-    public void delete(Member member) {
-        store.remove(member.getId());
+    public Member delete(Member member) {
+        return store.remove(member.getId());
+        //해당 키에 맞는 value를 반환함.
     }
 }

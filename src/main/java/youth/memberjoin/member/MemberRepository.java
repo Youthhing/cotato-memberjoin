@@ -11,5 +11,5 @@ public interface MemberRepository {
 
     Member findById(String id);
 
-    void delete(Member member);
+    Member delete(Member member);
 }
