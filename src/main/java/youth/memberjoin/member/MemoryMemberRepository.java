@@ -20,4 +20,9 @@ public class MemoryMemberRepository implements MemberRepository{
     public Member findById(String id) {
         return store.get(id);
     }
+
+    @Override
+    public void delete(Member member) {
+        store.remove(member.getId());
+    }
 }

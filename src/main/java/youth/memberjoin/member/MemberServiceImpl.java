@@ -48,5 +48,8 @@ public class MemberServiceImpl implements MemberService{
         return member;
     }
 
-
+    @Override
+    public void deleteMember(Member member) {
+        memberRepository.delete(member);
+    }
 }

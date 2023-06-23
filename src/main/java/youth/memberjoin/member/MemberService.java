@@ -19,4 +19,6 @@ public interface MemberService {
 
     Member LoginMember(LoginDto loginDto);
 
+    void deleteMember(Member member);
+
 }
