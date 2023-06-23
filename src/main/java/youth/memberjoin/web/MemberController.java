@@ -28,7 +28,14 @@ public class MemberController {
 
     }
 
+    @DeleteMapping("/deleteMember")
+    @ResponseBody
+    public String deleteMember(HttpSession session){
+        Member loggedInMember = (Member) session.getAttribute("loggedInMember");
+        memberService.deleteMember(loggedInMember);
+        return "you are deleted!!";
 
+    }
 
 
 

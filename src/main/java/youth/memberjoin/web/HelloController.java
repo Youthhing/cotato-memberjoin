@@ -35,8 +35,10 @@ public class HelloController {
 
         //문자열로 회원가입 성공메시지 띄우고 싶음
         //이후 로그인 url로 redirect하고 싶음
-        return "redirect:/loginSuccess";
+        return "redirect:/";
     }
+
+
     @GetMapping("/login")
     public String Login(@RequestBody LoginDto loginDto, HttpSession session){
         //id,pw 만 받는 클래스만들어서 관리해봐라
@@ -45,8 +47,9 @@ public class HelloController {
             session.setAttribute("loggedInMember",member.get());
             return "/members/afterLogin";
         }
-
-        return "redirect:/login";
+        else
+            return "redirect:/login";
+        //해당 부분은..
     }
 
     @PostMapping("/loginMember")
